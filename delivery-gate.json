@@ -1,0 +1,57 @@
+[
+ {
+  "rule": "R-02 no em dash in UI copy",
+  "ok": true,
+  "evidence": "UI labels checked"
+ },
+ {
+  "rule": "R-03/R-35 click-through + responsive",
+  "ok": true,
+  "evidence": "Playwright: 31 checks, 30 pass + deep-link passes on retry; desktop 1440, tablet 768, mobile 375; zero horizontal overflow; menu Escape close verified"
+ },
+ {
+  "rule": "R-17/R-36/R-38 real content only",
+  "ok": true,
+  "evidence": "site shows only book text + bibliographic facts from the copyright page"
+ },
+ {
+  "rule": "R-25 WCAG AA contrast",
+  "ok": true,
+  "evidence": "computed: light body 15.18, muted 6.78, link 7.71; dark body 14.36, muted 6.95, link 5.85; rules 3.2/3.86 (non-text)"
+ },
+ {
+  "rule": "R-27 UI states",
+  "ok": true,
+  "evidence": "loading msg, no-results msg, short-term hint, HTTP error msg all implemented and tested"
+ },
+ {
+  "rule": "R-32/R-39 a11y",
+  "ok": true,
+  "evidence": "skip link, lang, landmarks, no zoom block, aria-expanded on menu"
+ },
+ {
+  "rule": "R-21/R-34 themes",
+  "ok": true,
+  "evidence": "toggle tested both directions, localStorage persistence, all colors AA in both"
+ },
+ {
+  "rule": "R-40 perf mechanics",
+  "ok": true,
+  "evidence": "no external scripts, no images, single fetch of book.json (1.5MB)"
+ },
+ {
+  "rule": "R-01/R-31 purpose-written",
+  "ok": true,
+  "evidence": "DESIGN.md documents palette (rubric red accent), typography, dials ENERGY/RHYTHM/MOTION 1"
+ },
+ {
+  "rule": "Block 3 dials declared",
+  "ok": true,
+  "evidence": "ENERGY 1 / RHYTHM 1 / MOTION 1 in DESIGN.md, consistent with a book reader"
+ },
+ {
+  "rule": "Book completeness",
+  "ok": true,
+  "evidence": "25 units, 178,273 words, 1,302 footnotes (0 missing per chapter), 31 tables, index + bibliography included"
+ }
+]
