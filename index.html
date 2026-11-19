@@ -135,6 +135,14 @@ table.bk th{font-variant:small-caps;letter-spacing:.03em}
 .notes ol{margin:0;padding-left:1.4rem;font-size:.85rem;color:var(--muted)}
 .notes li{margin:.35rem 0}
 mark{background:var(--hit);color:inherit}
+sup.fn{font-size:.72em;line-height:0}
+sup.fn a{color:var(--accent);text-decoration:none;padding:0 .05em}
+sup.fn a:hover{text-decoration:underline}
+sup.fn a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.backref{font-size:.8em;text-decoration:none;color:var(--muted);margin-left:.25em}
+.backref:hover{color:var(--accent)}
+.notes li:target{background:var(--sel)}
+table.bk th{background:var(--sel);font-weight:bold}
 .front-lines p{margin:.6rem 0}
 .bib p{margin:0 0 .55rem;text-indent:-1.2rem;padding-left:1.2rem}
 .idx p{margin:0 0 .3rem}
@@ -257,19 +265,56 @@ function tocEntry(u, i){
   return li;
 }
 
+const HDR_CELLS = new Set(["old text", "new text", "revised text",
+  "traditional text", "traditional mass", "new mass", "roman canon", "text",
+  "eucharistic prayers 1968,1969", "traditional text from the latin"]);
+
+function withRefs(text, refs){
+  // refs: [[charOffset, noteNumber], ...] ascending. Render each as a
+  // superscript link to the note; the raw digits in the text are hidden
+  // (they are the print's inline footnote markers).
+  if (!refs || !refs.length) return esc(text);
+  let out = "";
+  let cursor = 0;
+  refs.forEach(([pos, n], k) => {
+    if (pos < cursor) return;                 // overlapping (backfilled)
+    const s = String(n);
+    const inText = text.startsWith(s, pos);
+    const end = inText ? pos + s.length : pos;
+    if (end < cursor || pos < cursor) return;
+    out += esc(text.slice(cursor, pos));
+    if (inText && k > 0 && text[pos - 1] === " " &&
+        refs[k - 1] && text.startsWith(String(refs[k - 1][1]), pos - 1 - String(refs[k - 1][1]).length)) {
+      // part of a split run like ".36 37": the leading space was already
+      // emitted inside the previous slice - drop it
+      out = out.replace(/ $/, "");
+    }
+    out += '<sup class="fn"><a href="#note-' + n + '" id="ref-' + n + '">' + n + "</a></sup>";
+    cursor = end;
+  });
+  out += esc(text.slice(cursor));
+  return out;
+}
+
 function blockHtml(b){
-  if (b.t === "p") return "<p>" + esc(b.x) + "</p>";
+  if (b.t === "p") return "<p>" + withRefs(b.x, b.refs) + "</p>";
   if (b.t === "h3") return '<h3 class="sec" id="sec-' + b.x.length + "-" + (b._i || 0) + '">' + esc(b.x) + "</h3>";
-  if (b.t === "quote") return '<p class="quote">' + esc(b.x) + "</p>";
+  if (b.t === "quote") return '<p class="quote">' + withRefs(b.x, b.refs) + "</p>";
   if (b.t === "li") return null; // collected by caller
   if (b.t === "note") return null;
   if (b.t === "table") {
+    // a row is a header row when its cells match the known header labels
+    // (or the first row of a 2-col comparison)
     let h = '<table class="bk">';
     const rows = b.raw ? b.raw.rows : b.rows;
     rows.forEach((r, ri) => {
+      const norm = c => c.trim().toLowerCase().replace(/\(.*\)$/, "").trim()
+        .replace(/^\d{4}\s+/, "");
+      const isHdr = r.length >= 2 && r.slice(0, 2).every(
+        c => HDR_CELLS.has(norm(c)));
       h += "<tr>";
       r.forEach(c => {
-        h += (ri === 0 ? "<th>" : "<td>") + esc(c) + (ri === 0 ? "</th>" : "</td>");
+        h += (isHdr ? "<th>" : "<td>") + esc(c) + (isHdr ? "</th>" : "</td>");
       });
       h += "</tr>";
     });
@@ -305,7 +350,7 @@ function renderUnit(u){
   html += '<div class="' + wrap + '">';
   parts.forEach((b, i) => {
     if (b.t === "ul") {
-      html += '<ul class="items">' + b.items.map(it => "<li>" + esc(it.x) + "</li>").join("") + "</ul>";
+      html += '<ul class="items">' + b.items.map(it => "<li>" + withRefs(it.x, it.refs) + "</li>").join("") + "</ul>";
     } else {
       b._i = i;
       html += blockHtml(b);
@@ -313,8 +358,11 @@ function renderUnit(u){
   });
   html += "</div>";
   if (notes.length) {
-    html += '<hr class="noteshr"><section class="notes"><h4>Notes to this chapter</h4><ol>';
-    notes.forEach(n => { html += "<li>" + esc(n.x) + "</li>"; });
+    html += '<hr class="noteshr"><section class="notes" id="notes"><h4>Notes to this chapter</h4><ol>';
+    notes.forEach(n => {
+      html += '<li id="note-' + n.n + '">' + esc(n.x) +
+              ' <a class="backref" href="#ref-' + n.n + '" aria-label="Back to text">\u21a9</a></li>';
+    });
     html += "</ol></section>";
   }
   return html;
