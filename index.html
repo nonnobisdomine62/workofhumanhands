@@ -144,6 +144,11 @@ sup.fn a:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .notes li:target{background:var(--sel)}
 table.bk th{background:var(--sel);font-weight:bold}
 .front-lines p{margin:.6rem 0}
+dl.abbr{display:grid;grid-template-columns:minmax(4.5rem,auto) 1fr;gap:.45rem 1.25rem;margin:1.2rem 0}
+dl.abbr dt{font-weight:600;white-space:nowrap}
+dl.abbr dd{margin:0}
+@media (max-width:640px){dl.abbr{grid-template-columns:1fr;gap:.1rem 0}
+dl.abbr dd{margin-bottom:.55rem}}
 .bib p{margin:0 0 .55rem;text-indent:-1.2rem;padding-left:1.2rem}
 .idx p{margin:0 0 .3rem}
 .status{color:var(--muted);font-style:italic}
@@ -321,6 +326,10 @@ function blockHtml(b){
     return h + "</table>";
   }
   if (b.t === "front") return '<div class="front-lines">' + b.lines.map(l => "<p>" + esc(l) + "</p>").join("") + "</div>";
+  if (b.t === "abbr") {
+    return '<dl class="abbr">' + b.items.map(it =>
+      "<dt>" + esc(it.ab) + "</dt><dd>" + esc(it.def) + "</dd>").join("") + "</dl>";
+  }
   if (b.t === "bib") return "<p>" + esc(b.x) + "</p>";
   if (b.t === "idx") return "<p>" + esc(b.x) + "</p>";
   return "";
@@ -391,13 +400,13 @@ function showHome(){
     '<h1 class="chaptitle">' + esc(m.title) + "</h1>" +
     '<p class="quote">' + esc(m.subtitle) + "</p>" +
     '<p>' + esc(m.edition) + ". " + esc(m.publisher) + ", " + esc(m.year) + ". ISBN " + esc(m.isbn) + ".</p>" +
-    '<p><a href="#unit-7" id="startLink">Start reading: Author' + "'" + 's Preface</a></p>';
+    '<p><a href="#unit-6" id="startLink">Start reading: Author' + "'" + 's Preface</a></p>';
   view.className = "chapter";
   currentUnit = -1;
   document.querySelectorAll("#tocList a").forEach(a => a.classList.remove("active"));
   document.getElementById("startLink").addEventListener("click", (e) => {
     e.preventDefault();
-    showUnit(7); // preface unit index
+    showUnit(6); // preface unit index
   });
   history.replaceState(null, "", location.pathname + location.search);
   window.scrollTo(0, 0);
@@ -421,6 +430,15 @@ function doSearch(){
         const rows = b.raw ? b.raw.rows : b.rows;
         rows.forEach(r => {
           const joined = r.join(" ");
+          if (joined.toLowerCase().includes(needle)) {
+            hits.push({u: ui, where: unitLabel(u), frag: snippet(joined, needle)});
+          }
+        });
+        return;
+      }
+      if (b.t === "abbr") {
+        b.items.forEach(it => {
+          const joined = it.ab + " " + it.def;
           if (joined.toLowerCase().includes(needle)) {
             hits.push({u: ui, where: unitLabel(u), frag: snippet(joined, needle)});
           }

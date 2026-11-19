@@ -14,27 +14,6 @@
    "id": "front",
    "kind": "front",
    "number": 0,
-   "title": "Half Title",
-   "book_first_page": null,
-   "content": [
-    {
-     "t": "front",
-     "pdf": 2,
-     "lines": [
-      "Work",
-      "of Human",
-      "Hands",
-      "A Theological",
-      "Critique of the",
-      "Mass of Paul VI"
-     ]
-    }
-   ]
-  },
-  {
-   "id": "front",
-   "kind": "front",
-   "number": 0,
    "title": "Title Page",
    "book_first_page": null,
    "content": [
@@ -130,65 +109,132 @@
    "book_first_page": null,
    "content": [
     {
-     "t": "front",
-     "pdf": 15,
-     "lines": [
-      "Bibliographical Abbreviations",
-      "Acta Apostolicae Sedis. (Periodical: Rome)",
-      "AAS",
-      "Catholic Encyclopedia. 1910.",
-      "CE",
-      "DOL Documents on the Liturgy: 1963-1979. (Paragraph number)",
-      "DZ",
-      "Denziger-Bannwart. Enchiridion Symbolorum. 31st ed.",
-      "EEFL Lodi. Enchiridion Euchologicum Fontium Liturgicorum.",
-      "(Paragraph number)",
-      "Ephemerides Liturgicae. (Periodical: Rome)",
-      "EL",
-      "ESR",
-      "Clark. Eucharistic Sacrifice and the Reformation.",
-      "General Instruction on the Roman Missal.",
-      "GI",
-      "HSM Gihr. The Holy Sacrifice of the Mass.",
-      "IL",
-      "Gueranger. Institutions Liturgiques.",
-      "Lectionary [1969]. (Reading number)",
-      "L",
-      "Seasoltz, ed. Living Bread, Saving Cup.",
-      "LB",
-      "LI",
-      "Lectionary, Introduction.",
-      "Jounel, ed. Liturgia Opera Divina e Umana.",
-      "LO",
-      "LP",
-      "Bouyer. Liturgical Piety.",
-      "King. Liturgy of the Roman Church.",
-      "LRC",
-      "Bruylants. Les Oraisons du Missel Romain.",
-      "M",
-      "(Oration number in vol. 2.)",
-      "M70 Missale Romanum [the new Missal]. 1970.",
-      "MD Pope Pius XII. Mediator Dei. (Paragraph number)",
-      "MRR Jungmann. Mass of the Roman Rite (Missarum Sollemnia).",
-      "Ottaviani Intervention. Cekada, translator.",
-      "OI",
-      "Patino, ed. New Order of Mass: Text & Commentary.",
-      "OMP",
-      "Migne. Patrologia Graeca.",
-      "PG",
-      "PGC Coughlan. The New Mass: A Pastoral Guide.",
-      "PL",
-      "Migne. Patrologia Latina.",
-      "Papal Teachings: The Liturgy. Monks of Solesmes, ed.",
-      "PTL",
-      "Bugnini. La Riforma Liturgica.",
-      "RL",
-      "SC Vatican II. Constitution on the Sacred Liturgy.",
-      "De Marco. Rome and the Vernacular.",
-      "RV",
-      "Sacrosanctum Concilium.",
-      "TM Fortescue. The Mass: A Study of the Roman Liturgy.",
-      "TNM Jungmann. The [New] Mass: Theological... Survey."
+     "t": "abbr",
+     "items": [
+      {
+       "ab": "AAS",
+       "def": "Acta Apostolicae Sedis. (Periodical: Rome)"
+      },
+      {
+       "ab": "CE",
+       "def": "Catholic Encyclopedia. 1910."
+      },
+      {
+       "ab": "DOL",
+       "def": "Documents on the Liturgy: 1963-1979. (Paragraph number)"
+      },
+      {
+       "ab": "DZ",
+       "def": "Denziger-Bannwart. Enchiridion Symbolorum. 31st ed."
+      },
+      {
+       "ab": "EEFL",
+       "def": "Lodi. Enchiridion Euchologicum Fontium Liturgicorum. (Paragraph number)"
+      },
+      {
+       "ab": "EL",
+       "def": "Ephemerides Liturgicae. (Periodical: Rome)"
+      },
+      {
+       "ab": "ESR",
+       "def": "Clark. Eucharistic Sacrifice and the Reformation."
+      },
+      {
+       "ab": "GI",
+       "def": "General Instruction on the Roman Missal."
+      },
+      {
+       "ab": "HSM",
+       "def": "Gihr. The Holy Sacrifice of the Mass."
+      },
+      {
+       "ab": "IL",
+       "def": "Gueranger. Institutions Liturgiques."
+      },
+      {
+       "ab": "L",
+       "def": "Lectionary [1969]. (Reading number)"
+      },
+      {
+       "ab": "LB",
+       "def": "Seasoltz, ed. Living Bread, Saving Cup."
+      },
+      {
+       "ab": "LI",
+       "def": "Lectionary, Introduction."
+      },
+      {
+       "ab": "LO",
+       "def": "Jounel, ed. Liturgia Opera Divina e Umana."
+      },
+      {
+       "ab": "LP",
+       "def": "Bouyer. Liturgical Piety."
+      },
+      {
+       "ab": "LRC",
+       "def": "King. Liturgy of the Roman Church."
+      },
+      {
+       "ab": "M",
+       "def": "Bruylants. Les Oraisons du Missel Romain. (Oration number in vol. 2.)"
+      },
+      {
+       "ab": "M70",
+       "def": "Missale Romanum [the new Missal]. 1970."
+      },
+      {
+       "ab": "MD",
+       "def": "Pope Pius XII. Mediator Dei. (Paragraph number)"
+      },
+      {
+       "ab": "MRR",
+       "def": "Jungmann. Mass of the Roman Rite (Missarum Sollemnia)."
+      },
+      {
+       "ab": "OI",
+       "def": "Ottaviani Intervention. Cekada, translator."
+      },
+      {
+       "ab": "OMP",
+       "def": "Patino, ed. New Order of Mass: Text & Commentary."
+      },
+      {
+       "ab": "PG",
+       "def": "Migne. Patrologia Graeca."
+      },
+      {
+       "ab": "PGC",
+       "def": "Coughlan. The New Mass: A Pastoral Guide."
+      },
+      {
+       "ab": "PL",
+       "def": "Migne. Patrologia Latina."
+      },
+      {
+       "ab": "PTL",
+       "def": "Papal Teachings: The Liturgy. Monks of Solesmes, ed."
+      },
+      {
+       "ab": "RL",
+       "def": "Bugnini. La Riforma Liturgica."
+      },
+      {
+       "ab": "RV",
+       "def": "De Marco. Rome and the Vernacular."
+      },
+      {
+       "ab": "SC",
+       "def": "Vatican II. Constitution on the Sacred Liturgy. Sacrosanctum Concilium."
+      },
+      {
+       "ab": "TM",
+       "def": "Fortescue. The Mass: A Study of the Roman Liturgy."
+      },
+      {
+       "ab": "TNM",
+       "def": "Jungmann. The [New] Mass: Theological... Survey."
+      }
      ]
     }
    ]
@@ -201,47 +247,77 @@
    "book_first_page": null,
    "content": [
     {
-     "t": "front",
-     "pdf": 16,
-     "lines": [
-      "Other Abbreviations",
-      "Advt",
-      "Tempus Adventus, Advent",
-      "Annm Tempus per Annum, Ordinary Time",
-      "Ash Wednesday through Saturday",
-      "Cin",
-      "Epip",
-      "Epiphania, Epiphany",
-      "Natv",
-      "Tempus Nativitatis, Christmas Time",
-      "Tempus Paschale, Eastertide",
-      "Pasc",
-      "Pent",
-      "Tempus Pentecostes, Pentecost",
-      "Tempus Quadragesimae, Lent",
-      "Quad",
-      "QT",
-      "Quatuor Tempora, Ember Days",
-      "Sanctus, -a, Saint",
-      "S.",
-      "S Super Oblata, Prayer over Gifts, Secret",
-      "Collecta, Opening Prayer, Collect",
-      "C",
-      "P",
-      "Post Communionem, Postcommunion",
-      "Oratio super Populum, Prayer over People",
-      "SP",
-      "Oratio, other orations",
-      "O",
-      "OB",
-      "Oratio benedictionis, Blessings",
-      "After abbreviations for the season of the liturgical year, the first number des",
-      "ignates the Sunday or week in the season, and the second number designates",
-      "the day of the week if other than Sunday, e.g., Quad 4.4 = Fourth week of",
-      "Lent, Wednesday. For Ash Wednesday through the following Saturday, the",
-      "number after the abbreviation designates the day of the week. Cin 6 = Friday",
-      "after Ash Wednesday."
+     "t": "abbr",
+     "items": [
+      {
+       "ab": "Advt",
+       "def": "Tempus Adventus, Advent"
+      },
+      {
+       "ab": "Annm",
+       "def": "Tempus per Annum, Ordinary Time"
+      },
+      {
+       "ab": "Cin",
+       "def": "Ash Wednesday through Saturday"
+      },
+      {
+       "ab": "Epip",
+       "def": "Epiphania, Epiphany"
+      },
+      {
+       "ab": "Natv",
+       "def": "Tempus Nativitatis, Christmas Time"
+      },
+      {
+       "ab": "Pasc",
+       "def": "Tempus Paschale, Eastertide"
+      },
+      {
+       "ab": "Pent",
+       "def": "Tempus Pentecostes, Pentecost"
+      },
+      {
+       "ab": "Quad",
+       "def": "Tempus Quadragesimae, Lent"
+      },
+      {
+       "ab": "QT",
+       "def": "Quatuor Tempora, Ember Days"
+      },
+      {
+       "ab": "S.",
+       "def": "Sanctus, -a, Saint"
+      },
+      {
+       "ab": "C",
+       "def": "Collecta, Opening Prayer, Collect"
+      },
+      {
+       "ab": "S",
+       "def": "Super Oblata, Prayer over Gifts, Secret"
+      },
+      {
+       "ab": "P",
+       "def": "Post Communionem, Postcommunion"
+      },
+      {
+       "ab": "SP",
+       "def": "Oratio super Populum, Prayer over People"
+      },
+      {
+       "ab": "O",
+       "def": "Oratio, other orations"
+      },
+      {
+       "ab": "OB",
+       "def": "Oratio benedictionis, Blessings"
+      }
      ]
+    },
+    {
+     "t": "p",
+     "x": "After abbreviations for the season of the liturgical year, the first number designates the Sunday or week in the season, and the second number designates the day of the week if other than Sunday, e.g., Quad 4.4 = Fourth week of Lent, Wednesday. For Ash Wednesday through the following Saturday, the number after the abbreviation designates the day of the week. Cin 6 = Friday after Ash Wednesday."
     }
    ]
   },
