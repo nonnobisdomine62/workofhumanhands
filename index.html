@@ -178,6 +178,11 @@ footer.site{
     transform:translateX(-100%);transition:transform .25s ease;
     padding-top:1rem;box-shadow:4px 0 24px rgba(0,0,0,.22);
     border-right:1px solid var(--rule);
+    /* reset the desktop flex-item rule so top:0/bottom:0 stretch the
+       panel to the viewport; without this the drawer grows to content
+       height and the list cannot scroll */
+    align-self:auto;align-items:stretch;
+    overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
   }
   nav.toc.open{transform:translateX(0)}
   .toc-scrim{
